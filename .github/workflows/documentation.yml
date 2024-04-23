@@ -3,27 +3,29 @@ name: Documentation Deployment
 on:
   push:
     branches:
-      - main  # Adjust the branch name as needed
+      - main
 
 jobs:
-  deploy:
+  build-and-deploy-docs:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Install any dependencies required for building the documentation
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
       - name: Install dependencies
-        run: npm install  # Adjust the command based on your documentation setup
+        run: npm install
 
-      # Build the documentation
       - name: Build documentation
-        run: npm run build-docs  # Adjust the command based on your documentation setup
+        run: npm run build-docs
 
-      # Deploy the documentation to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs  # Adjust the path to the built documentation
+          publish_dir: ./docs/.vuepress/dist
