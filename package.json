@@ -5,9 +5,7 @@
   "description": "Scripts for scraping the Heavens Above website.",
   "main": "run.js",
   "scripts": {
-    "start": "node run.js",
-    "serve": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "start": "node run.js"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
