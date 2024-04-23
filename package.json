@@ -5,7 +5,9 @@
   "description": "Scripts for scraping the Heavens Above website.",
   "main": "run.js",
   "scripts": {
-    "start": "node run.js"
+    "start": "node run.js",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
