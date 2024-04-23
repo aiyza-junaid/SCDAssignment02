@@ -6,7 +6,7 @@
   "main": "run.js",
   "scripts": {
     "start": "node run.js",
-    "build-docs": "vuepress build docs"
+    "generate-docs": "jsdoc -r ./src -d ./docs"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@vue/cli": "^5.0.8",
-    "vuepress": "^1.9.10"
+    "vuepress": "^1.9.10",
+    "jsdoc": "^3.6.7"
   }
 }
