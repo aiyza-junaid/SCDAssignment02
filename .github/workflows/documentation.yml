@@ -1,31 +1,29 @@
-name: Documentation Deployment
+name: Documentation Generation
 
 on:
   push:
     branches:
-      - main
+      - main  # Change this to your main branch name
 
 jobs:
-  build-and-deploy-docs:
+  generate-docs:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Install dependencies
-        run: npm install
+      - name: Install JSDoc and jsdoc-to-markdown
+        run: npm install --save-dev jsdoc-to-markdown
 
       - name: Generate documentation
-        run: npm run generate-docs
+        run: |
+          npx jsdoc-to-markdown ./src/utils.js > ./docs.md
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Pull changes from main branch
+        run: git pull origin main
+
+      - name: Push Changes
+        uses: ad-m/github-push-action@main
         with:
-          github_token: ${{ secrets.GH }}
-          publish_dir: ./docs 
+          github_token: ${{ secrets.GH }} 

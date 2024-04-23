@@ -1,9 +1,26 @@
 const crypto = require('crypto');
 
+/**
+ * @fileoverview This file contains utility functions for the application.
+ */
+
+/**
+ * Converts a time string in the format "HH:MM:SS" to seconds.
+ * @param {string} time - The time string to convert.
+ * @returns {number} The time in seconds.
+ */
+
 function getTimestamp(time) {
 	const arr = time.split(":");
 	return parseInt(arr[0]) * 3600 + parseInt(arr[1]) * 60 + parseInt(arr[2]);
 }
+
+/**
+ * Function to post options.
+ * @param {string} target - The target URL.
+ * @param {Object} opt - The options object.
+ * @returns {Object} The post options.
+ */
 
 function post_options(target, opt) {
 	return {
@@ -28,6 +45,12 @@ function post_options(target, opt) {
 	};
 }
 
+/**
+ * Function to get options.
+ * @param {string} target - The target URL.
+ * @returns {Object} The get options.
+ */
+
 function get_options(target) {
 	return {
 		url: `https://www.heavens-above.com/${target}lat=39.9042&lng=116.4074&loc=%E5%8C%97%E4%BA%AC%E5%B8%82&alt=52&tz=ChST`,
@@ -46,6 +69,12 @@ function get_options(target) {
 	};
 }
 
+/**
+ * Function to get image options.
+ * @param {string} target - The target URL.
+ * @returns {Object} The image options.
+ */
+
 function image_options(target) {
 	return {
 		url: target,
@@ -63,6 +92,13 @@ function image_options(target) {
 		}
 	};
 }
+
+
+/**
+ * Function to get iridium options.
+ * @param {string} target - The target URL.
+ * @returns {Object} The iridium options.
+ */
 
 function iridium_options(target) {
 	return {
@@ -83,10 +119,17 @@ function iridium_options(target) {
 	};
 }
 
+/**
+ * Calculates the MD5 hash of a string.
+ * @param {string} str - The input string.
+ * @returns {string} The MD5 hash.
+ */
+
 function md5(str) {
 	return crypto.createHash('md5').update(str).digest('hex');
 }
 
+// Export the functions
 module.exports = {
 	getTimestamp,
 	post_options,
