@@ -18,7 +18,17 @@ jobs:
 
       - name: Generate documentation
         run: |
-          npx jsdoc-to-markdown ./src/utils.js > ./docs.md
+          npx jsdoc-to-markdown ./src/utils.js > ./documentation.md
+
+      - name: Check for changes and commit
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit. Exiting..."
+            exit 0
+          fi
+          git config --global user.name "GitHub Actions"
+          git add .
+          git commit -m "Generate documentation"
 
       - name: Pull changes from main branch
         run: git pull origin main
