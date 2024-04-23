@@ -1,0 +1,20 @@
+name: Custom Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  custom_task:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Custom Task
+        run: |
+          # Execute your custom task here
+          echo "Executing custom task..."
+          # Add your custom commands or scripts to automate the task
