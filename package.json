@@ -30,6 +30,7 @@
     "node": ">=12.10.0"
   },
   "devDependencies": {
-    "@vue/cli": "^5.0.8"
+    "@vue/cli": "^5.0.8",
+    "vuepress": "^1.9.10"
   }
 }
