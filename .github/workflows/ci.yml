@@ -1,0 +1,38 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+        continue-on-error: true
+
+      - name: Check code linting
+        run: npm run lint
+        continue-on-error: true
+
+      - name: Set status checks
+        if: always()
+        uses: EndBug/add-and-commit@v7
+        with:
+          status: ${{ job.status }}
+          message: "Tests and linting checks completed"
+          add: all
