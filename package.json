@@ -6,8 +6,8 @@
   "main": "run.js",
   "scripts": {
     "start": "node run.js",
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "serve": "webpack serve --mode development",
+    "build": "webpack --mode production"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
@@ -29,5 +29,8 @@
   "homepage": "https://github.com/PKUPI/heavens-above#readme",
   "engines": {
     "node": ">=12.10.0"
+  },
+  "devDependencies": {
+    "@vue/cli": "^5.0.8"
   }
 }
