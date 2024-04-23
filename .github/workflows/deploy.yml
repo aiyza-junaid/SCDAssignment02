@@ -19,10 +19,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install Heroku CLI
-        uses: akhileshns/heroku-cli-action@v1.2.0
+        uses: akhileshns/heroku-cli-action@v2.315.0
 
       - name: Login to Heroku
-        run: heroku login -i
+        run: |
+          echo ${{ secrets.HEROKU_API_KEY }} | heroku login --interactive
 
       - name: Deploy to Heroku
         run: |
