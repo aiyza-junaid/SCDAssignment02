@@ -49,5 +49,5 @@ jobs:
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          heroku_api_key: ${{ HRKU-3a87e724-991d-4cc2-a242-e7d254d988f7 }}
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: "assignment 02"
