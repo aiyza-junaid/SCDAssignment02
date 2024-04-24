@@ -22,24 +22,21 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: npm test
-        #continue-on-error: true
-        # Custom feedback based on success or failure
-        if: ${{ failure() }}
-        run: echo "Tests failed"
+        run: |
+          npm test
+          if: ${{ failure() }}
+          echo "Tests failed"
 
       - name: Check code linting
-        run: npm run lint
-        #continue-on-error: true
-        # Custom feedback based on success or failure
-        if: ${{ failure() }}
-        run: echo "Linting failed"
+        run: |
+          npm run lint
+          if: ${{ failure() }}
+          echo "Linting failed"
 
       - name: Set status checks
         if: always()
         uses: EndBug/add-and-commit@v7
         with:
-          # Custom feedback based on success or failure
           status: ${{ job.status }}
           message: |
             ${{ job.status == 'success' && 'All checks passed' || 'Some checks failed' }}
