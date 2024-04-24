@@ -22,19 +22,13 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: |
-          npm test
-          if: ${{ failure() }}
-          echo "Tests failed"
+        run: npm test
 
       - name: Check code linting
-        run: |
-          npm run lint
-          if: ${{ failure() }}
-          echo "Linting failed"
+        run: npm run lint
 
       - name: Set status checks
-        if: always()
+        if: ${{ failure() }}
         uses: EndBug/add-and-commit@v7
         with:
           status: ${{ job.status }}
