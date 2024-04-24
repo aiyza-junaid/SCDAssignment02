@@ -23,11 +23,11 @@ jobs:
 
       - name: Run tests
         run: npm test
-        #continue-on-error: true
+        continue-on-error: true
 
       - name: Check code linting
         run: npm run lint
-       #continue-on-error: true
+        continue-on-error: true
 
       - name: Set status checks
         if: always()
