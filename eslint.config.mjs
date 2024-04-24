@@ -11,7 +11,10 @@ const config = [
 ];
 
 // Polyfill optional chaining and nullish coalescing for environments that don't support them
-if (!config[0].languageOptions) config[0].languageOptions = {};
-config[0].languageOptions.ecmaVersion = 2021;
+if (!config[0].languageOptions) {
+  config[0].languageOptions = { ecmaVersion: 2021 };
+} else if (!config[0].languageOptions.ecmaVersion) {
+  config[0].languageOptions.ecmaVersion = 2021; 
+}
 
 export default config;
