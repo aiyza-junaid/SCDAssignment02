@@ -6,7 +6,8 @@
   "main": "run.js",
   "scripts": {
     "start": "node run.js",
-    "generate-docs": "jsdoc -r ./src -d ./docs"
+    "generate-docs": "jsdoc -r ./src -d ./docs",
+    "lint": "eslint ."
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
