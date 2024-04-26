@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node run.js",
     "generate-docs": "jsdoc -r ./src -d ./docs",
+    "test": "jest", 
     "lint": "eslint ."
   },
   "dependencies": {
@@ -35,6 +36,7 @@
     "eslint": "^9.1.1",
     "jsdoc": "^3.6.7",
     "jsdoc-to-markdown": "^8.0.1",
-    "vuepress": "^1.9.10"
+    "vuepress": "^1.9.10",
+    "jest": "^27.0.6"
   }
 }
