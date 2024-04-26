@@ -1,9 +1,8 @@
 name: Scheduled Tasks
 
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: '0 0 * * *'  #runs everyday at midnight
 
 jobs:
   scheduled-task:
@@ -12,8 +11,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Run maintenance tasks
+      - name: Run maintenance task
         run: |
-          npm install   
+          npm install  
           npm test      
+         
           echo "Running scheduled maintenance task"
