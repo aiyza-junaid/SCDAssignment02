@@ -6,15 +6,29 @@ on:
       - main
 
 jobs:
-  custom_task:
+  generate_release_notes:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Run Custom Task
+      - name: Generate Release Notes
         run: |
-          # Execute your custom task here
-          echo "Executing custom task..."
-          # Add your custom commands or scripts to automate the task
+          echo "Generating release notes..."
+          # Fetch the commit messages since the last release and save them to a file
+          git log --pretty=format:"- %s" $(git describe --tags --abbrev=0 HEAD^)..HEAD > release_notes.txt
+
+  analyze_performance_metrics:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run performance tests
+        run: npm run performance-tests
+

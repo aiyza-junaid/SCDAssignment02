@@ -15,34 +15,36 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      
       - name: Run linting
         run: npm run lint
-        continue-on-error: true  #continue even if linting fails to ensure other checks are runningg
+        continue-on-error: true
 
       - name: Run code quality analysis
         run: npm run analyze
-        continue-on-error: true  
+        continue-on-error: true
 
       - name: Scan for vulnerabilities
         run: npm audit
 
-      #commenting on the pull request with the results of code review
+      - name: Fix vulnerabilities
+        run: npm audit fix --force
+
+      # Commenting on the pull request with the results of code review
       - name: Comment on pull request
         uses: actions/github-script@v5
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            const pullRequestNumber = context.payload.pull_request.number;
             const issueComment = `
             Thank you for the pull request! Here's the summary of the code review:
             - Linting: ${{ job.status }}
             - Code quality analysis: ${{ job.status }}
             - Security vulnerabilities: ${{ job.status }}
             `;
-
             github.issues.createComment({
-              issue_number: pullRequest.numberr,
+              issue_number: pullRequestNumber,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 'Code review checks have been completed.'
+              body: issueComment
             });
