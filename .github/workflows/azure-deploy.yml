@@ -60,7 +60,4 @@ jobs:
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
       continue-on-error: true  
 
-    - name: Print deployment error
-      if: ${{ failure() }} 
-      run: echo "Deployment failed with error: ${{ job.status }}"
 
