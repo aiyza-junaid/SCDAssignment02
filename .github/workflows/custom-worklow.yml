@@ -18,3 +18,9 @@ jobs:
           echo "Generating release notes..."
           # Fetch the commit messages since the last release and save them to a file
           git log --pretty=format:"- %s" $(git describe --tags --abbrev=0 HEAD^)..HEAD > release_notes.txt
+
+      - name: Upload Release Notes as Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-notes
+          path: release_notes.txt
