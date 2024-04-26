@@ -21,13 +21,11 @@ jobs:
 
       - name: Make Commits
         run: |
-          echo "Making commits..."
-          echo "Commit 1" >> file.txt
-          git add file.txt
-          git commit -m "Add changes for commit 1"
-          echo "Commit 2" >> file.txt
-          git add file.txt
-          git commit -m "Add changes for commit 2"
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          git commit -m "Display Commit Logs"
+          git push origin main
 
       - name: Upload Release Notes as Artifact
         uses: actions/upload-artifact@v2
