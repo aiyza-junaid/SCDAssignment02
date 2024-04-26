@@ -10,12 +10,6 @@ const config = [
   pluginReactConfig,
 ];
 
-// Polyfill optional chaining and nullish coalescing for environments that don't support them
-if (!config[0].languageOptions) {
-  config[0].languageOptions = { ecmaVersion: 2021 };
-} else if (!config[0].languageOptions.ecmaVersion) {
-  config[0].languageOptions.ecmaVersion = 2021; 
-}
 
 module.exports = {
   parserOptions: {
