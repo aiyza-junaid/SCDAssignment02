@@ -12,25 +12,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Install dependencies and setup your project environment if needed
-
-      # Run linting and coding standards checks
+      
       - name: Run linting
         run: npm run lint
-        continue-on-error: true  # Continue even if linting fails to ensure other checks run
+        continue-on-error: true  #continue even if linting fails to ensure other checks are runningg
 
-      # Run code quality analysis
       - name: Run code quality analysis
         run: npm run analyze
-        continue-on-error: true  # Continue even if code analysis fails to ensure other checks run
+        continue-on-error: true  
 
-      # Scan for security vulnerabilities
       - name: Scan for vulnerabilities
         run: npm audit
 
-      # Add additional steps as needed for specific checks (e.g., unit tests, integration tests)
-
-      # Comment on the pull request with the results of code review
+      #commenting on the pull request with the results of code review
       - name: Comment on pull request
         uses: actions/github-script@v5
         with:
