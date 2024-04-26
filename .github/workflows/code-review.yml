@@ -38,8 +38,8 @@ jobs:
             `;
 
             github.issues.createComment({
-              issue_number: context.issue.number,
+              issue_number: pullRequest.numberr,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: issueComment
+              body: 'Code review checks have been completed.'
             });
