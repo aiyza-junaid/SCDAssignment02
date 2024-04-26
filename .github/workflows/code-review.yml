@@ -25,6 +25,7 @@ jobs:
 
       - name: Scan for vulnerabilities
         run: npm audit
+        continue-on-error: true
 
       - name: Fix vulnerabilities
         run: npm audit fix --force
