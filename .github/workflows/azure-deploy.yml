@@ -59,19 +59,7 @@ jobs:
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
-# Add a new job to handle authentication errors
-  handle-auth-error:
-    runs-on: ubuntu-latest
-    needs: deploy
-    if: failure()
-    steps:
-    - name: Handle authentication error
-      run: echo "Deployment failed due to authentication error. Please check credentials."
-
-# Define workflow execution order
-  workflow:
-    runs-on: ubuntu-latest
-    needs: [ build, deploy, handle-auth-error ]
-    steps:
-    - name: Continue workflow execution
-      run: echo "Deployment completed successfully."
+  # Add a conditional step to handle errors
+    - name: Handle deployment errors
+      if: failure()
+      run: echo "Deployment failed. Continuing workflow execution.
