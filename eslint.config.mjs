@@ -1,7 +1,7 @@
 // Import required modules
-import globals from "globals";
-import pluginJs from "@eslint/js";
-import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
+const globals = require("globals");
+const pluginJs = require("@eslint/js");
+const pluginReactConfig = require("eslint-plugin-react/configs/recommended.js");
 
 // Define ESLint configuration
 const config = [
@@ -17,4 +17,10 @@ if (!config[0].languageOptions) {
   config[0].languageOptions.ecmaVersion = 2021; 
 }
 
-export default config;
+module.exports = {
+  parserOptions: {
+    ecmaVersion: 2021,
+  },
+  // Other ESLint configuration...
+  ...config,
+};
