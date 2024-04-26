@@ -14,7 +14,6 @@ jobs:
 
       - name: Run maintenance tasks
         run: |
-          npm install  
-          npm run build 
+          npm install   
           npm test      
           echo "Running scheduled maintenance task"
