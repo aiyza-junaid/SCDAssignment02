@@ -37,6 +37,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            console.log(JSON.stringify(context.payload, null, 2)); // Log the payload
             const pullRequestNumber = context.payload.pull_request.number;
             const issueComment = `
             Thank you for the pull request! Here's the summary of the code review:
@@ -50,3 +51,4 @@ jobs:
               repo: context.repo.repo,
               body: issueComment
             });
+
