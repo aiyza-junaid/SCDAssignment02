@@ -19,6 +19,16 @@ jobs:
           # Fetch the commit messages since the last release and save them to a file
           git log --pretty=format:"%s" > ./release_notes.txt
 
+      - name: Make Commits
+        run: |
+          echo "Making commits..."
+          echo "Commit 1" >> file.txt
+          git add file.txt
+          git commit -m "Add changes for commit 1"
+          echo "Commit 2" >> file.txt
+          git add file.txt
+          git commit -m "Add changes for commit 2"
+
       - name: Upload Release Notes as Artifact
         uses: actions/upload-artifact@v2
         with:
