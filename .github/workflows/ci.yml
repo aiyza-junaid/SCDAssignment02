@@ -28,12 +28,3 @@ jobs:
       - name: Check code linting
         run: |
           npm run lint || echo "Linting failed, but continuing..."
-
-      - name: Set status checks
-        if: ${{ failure() }}
-        uses: EndBug/add-and-commit@v7
-        with:
-          status: ${{ job.status }}
-          message: |
-            ${{ job.status == 'success' && 'All checks passed' || 'Some checks failed' }}
-          add: all
