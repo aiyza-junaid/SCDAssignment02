@@ -29,6 +29,7 @@ jobs:
 
       - name: Fix vulnerabilities
         run: npm audit fix --force
+        continue-on-error: true
 
       # Commenting on the pull request with the results of code review
       - name: Comment on pull request
