@@ -26,7 +26,7 @@ jobs:
           git add .
           git commit -m "Display Commit Logs"
           git push origin main
-
+ 
       - name: Upload Release Notes as Artifact
         uses: actions/upload-artifact@v2
         with:
