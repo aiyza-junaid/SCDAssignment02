@@ -1,0 +1,43 @@
+{
+  "name": "heavens-above",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Scripts for scraping the Heavens Above website.",
+  "main": "run.js",
+  "scripts": {
+    "start": "node run.js",
+    "generate-docs": "jsdoc -r ./src -d ./docs",
+    "test": "jest",
+    "lint": "eslint .",
+    "performance-tests": "jest --performance"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "request": "^2.88.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PKUPI/heavens-above.git"
+  },
+  "keywords": [
+    "Heavens Above",
+    "spider"
+  ],
+  "author": "Mimi <stevenjoezhang@gmail.com> (https://zhangshuqiao.org)",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/PKUPI/heavens-above/issues"
+  },
+  "homepage": "https://github.com/PKUPI/heavens-above#readme",
+  "engines": {
+    "node": ">=12.10.0"
+  },
+  "devDependencies": {
+    "@vue/cli": "^5.0.8",
+    "eslint": "^9.1.1",
+    "jest": "^27.0.6",
+    "jsdoc": "^3.6.7",
+    "jsdoc-to-markdown": "^8.0.1",
+    "vuepress": "^1.9.10"
+  }
+}
